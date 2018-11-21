@@ -75,6 +75,7 @@ env:
     - REPO_URL=https://github.com/gap-packages/liepring.git
     - REPO_URL=https://github.com/gap-packages/loops.git
     - REPO_URL=https://github.com/gap-packages/lpres.git
+    - REPO_URL=https://github.com/MWhybrow92/MajoranaAlgebras.git
     - REPO_URL=https://github.com/gap-packages/MapClass.git
     - REPO_URL=https://github.com/hulpke/matgrp.git
     - REPO_URL=https://github.com/gap-packages/MathInTheMiddle.git
