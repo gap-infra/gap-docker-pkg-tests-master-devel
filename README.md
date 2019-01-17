@@ -37,5 +37,5 @@ those steps. An example of such script which clones `libsemigroups`
 repository need to build the Semigroups package could be found at
 https://github.com/gap-packages/Semigroups/blob/master/prerequisites.sh.
 
-There are further tests of GAP packages in other settings. You can find all
-of them in one place at https://github.com/gap-system/gap-distribution.
+For the full list of all publicly available tests from the GAP test suite
+see https://github.com/gap-system/gap-distribution/blob/master/README.md
