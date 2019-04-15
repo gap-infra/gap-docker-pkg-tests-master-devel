@@ -72,7 +72,6 @@ env:
     - REPO_URL=https://github.com/nathancarter/jupyterviz.git
     - REPO_URL=https://github.com/gap-packages/kan.git
     - REPO_URL=https://github.com/gap-packages/kbmag.git
-    - REPO_URL=https://github.com/gap-packages/kerneltest.git 
     - REPO_URL=https://github.com/gap-packages/laguna.git
     - REPO_URL=https://github.com/gap-packages/liealgdb.git
     - REPO_URL=https://github.com/gap-packages/liepring.git
