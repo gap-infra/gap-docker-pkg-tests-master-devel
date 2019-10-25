@@ -4,15 +4,15 @@ set -e
 
 SRCDIR=${SRCDIR:-$PWD}
 # The following assumes that REPO_URL looks like this: https://provider.com/username/packagename.git
-PKG_NAME="$(basename ${REPO_URL} .git)"
+PKGDIR="$(basename ${REPO_URL} .git)"
 
 echo SRCDIR   : $SRCDIR
 echo REPO_URL : $REPO_URL
-echo PKG_NAME : $PKG_NAME
+echo PKGDIR   : $PKGDIR
 
 git clone ${REPO_URL}
 
-cd ${PKG_NAME}
+cd ${PKGDIR}
 
 git log -n 1
 
