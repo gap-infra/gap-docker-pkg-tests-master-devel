@@ -14,6 +14,7 @@ git clone ${REPO_URL}
 
 cd ${PKGDIR}
 
+# show head commit for debugging
 git log -n 1
 
 ###############################################################################
@@ -25,35 +26,11 @@ then
   ./prerequisites.sh
 fi
 
-# for NormalizInterface
-if [[ -f build-normaliz.sh ]]
-then
-  ./build-normaliz.sh ${GAP_HOME}
-fi
+# build the package
+cd ..
+${GAP_HOME}/bin/BuildPackages.sh --with-gaproot=${GAP_HOME} --strict ${PKGDIR}
+cd ${PKGDIR}
 
-# The next block is borrowed from 
-# https://github.com/gap-system/gap/blob/master/bin/BuildPackages.sh
-#
-# build this package, if necessary
-#
-# We want to know if this is an autoconf configure script
-# or not, without actually executing it!
-if [[ -f autogen.sh && ! -f configure ]]
-then
-  ./autogen.sh
-fi
-if [[ -f "configure" ]]
-then
-  if grep Autoconf ./configure > /dev/null
-  then
-    ./configure --with-gaproot=${GAP_HOME}
-  else
-    ./configure ${GAP_HOME}
-  fi
-  make
-else
-  echo "No building required for $PKG"
-fi
 
 # set up a custom GAP root containing only this package, so that
 # we can force GAP to load the correct version of this package
