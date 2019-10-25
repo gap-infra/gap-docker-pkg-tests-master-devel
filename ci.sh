@@ -2,13 +2,18 @@
 
 set -e
 
-SRCDIR=${SRCDIR:-$PWD}
+SRCDIR=$PWD
 # The following assumes that REPO_URL looks like this: https://provider.com/username/packagename.git
 PKGDIR="$(basename ${REPO_URL} .git)"
 
 echo SRCDIR   : $SRCDIR
 echo REPO_URL : $REPO_URL
 echo PKGDIR   : $PKGDIR
+
+# set up a custom GAP root containing only this package, so that
+# we can force GAP to load the correct version of this package
+mkdir -p gaproot/pkg/
+cd gaproot/pkg/
 
 git clone ${REPO_URL}
 
@@ -32,15 +37,10 @@ ${GAP_HOME}/bin/BuildPackages.sh --with-gaproot=${GAP_HOME} --strict ${PKGDIR}
 cd ${PKGDIR}
 
 
-# set up a custom GAP root containing only this package, so that
-# we can force GAP to load the correct version of this package
-mkdir -p gaproot/pkg/
-ln -s $PWD gaproot/pkg/
-
 ###############################################################################
 
 # start GAP with custom GAP root, to ensure correct package version is loaded
-GAP="${GAP_HOME}/bin/gap.sh -l $PWD/gaproot; --quitonbreak -q"
+GAP="${GAP_HOME}/bin/gap.sh -l $SRCDIR/gaproot; --quitonbreak -q"
 
 echo ""
 echo "######################################################################"
@@ -49,10 +49,11 @@ echo "# TESTING WHETHER THE PACKAGE IS LOADABLE"
 echo "#"
 echo "######################################################################"
 echo ""
-$GAP <<GAPInput
+$GAP -A <<GAPInput
 Read("/home/gap/travis/ci.g");
 SetInfoLevel(InfoPackageLoading,4);
-if LoadPackage(LowercaseString(GetNameFromPackageInfo("PackageInfo.g"))) <> true then
+pkg := PreparePackageInDir("${PWD}");;
+if LoadPackage(pkg) <> true then
     Print("PACKAGE IS NOT LOADABLE - TEST TERMINATED\n");
     FORCE_QUIT_GAP(1);
 fi;
@@ -68,7 +69,8 @@ echo "######################################################################"
 echo ""
 $GAP <<GAPInput
 Read("/home/gap/travis/ci.g");
-if TestOnePackage(LowercaseString(GetNameFromPackageInfo("PackageInfo.g"))) <> true then
+pkg := PreparePackageInDir("${PWD}");;
+if TestOnePackage(pkg) <> true then
     FORCE_QUIT_GAP(1);
 fi;
 QUIT_GAP(0);
@@ -83,7 +85,8 @@ echo "######################################################################"
 echo ""
 $GAP -A <<GAPInput
 Read("/home/gap/travis/ci.g");
-if TestOnePackage(LowercaseString(GetNameFromPackageInfo("PackageInfo.g"))) <> true then
+pkg := PreparePackageInDir("${PWD}");;
+if TestOnePackage(pkg) <> true then
     FORCE_QUIT_GAP(1);
 fi;
 QUIT_GAP(0);
@@ -97,9 +100,10 @@ echo "#"
 echo "######################################################################"
 echo ""
 $GAP <<GAPInput
-LoadAllPackages();
 Read("/home/gap/travis/ci.g");
-if TestOnePackage(LowercaseString(GetNameFromPackageInfo("PackageInfo.g"))) <> true then
+pkg := PreparePackageInDir("${PWD}");;
+LoadAllPackages();
+if TestOnePackage(pkg) <> true then
     FORCE_QUIT_GAP(1);
 fi;
 QUIT_GAP(0);

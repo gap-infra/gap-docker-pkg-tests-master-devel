@@ -87,3 +87,25 @@ else
     fi;
 fi;
 end;
+
+
+PreparePackageInDir := function(path)
+    local pkg, pkginfo;
+    pkg := LowercaseString(GetNameFromPackageInfo("PackageInfo.g"));
+    if IsPackageMarkedForLoading(pkg, "") then
+        # verify the right version of the package was loaded
+        pkginfo := GAPInfo.PackagesInfo.(pkg);
+        if Length(pkginfo) > 1 then
+            Print("#I  Found ", Length(pkginfo), " copies of package ", pkg, "\n");
+        fi;
+        if pkginfo[1].InstallationPath <> path then
+            Error("Package ", pkg, " already loaded from bad path '",
+                   pkginfo[1].InstallationPath, "' instead of the expected path '",
+                   path, "'");
+        fi;
+    else
+        # ensure the right version of the package gets loaded later on
+        SetPackagePath(pkg, path);
+    fi;
+    return pkg;
+end;
