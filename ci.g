@@ -66,7 +66,7 @@ else
             Print( "#I  No errors detected while testing package ", pkgname,
                    " version ", GAPInfo.PackagesInfo.(pkgname)[1].Version, 
                    "\n#I  using the test file `", testfile, "'\n");
-            return true;       
+            return true;
         else
             Print( "#I  Errors detected while testing package ", pkgname, 
                    " version ", GAPInfo.PackagesInfo.(pkgname)[1].Version, 
@@ -76,6 +76,14 @@ else
     elif not READ( testfile ) then
         Print( "#I Test file `", testfile, "' for package `", pkgname,
         " version ", GAPInfo.PackagesInfo.(pkgname)[1].Version, " is not readable\n" );
+        return fail;
+    else
+        # At this point, the READ succeeded, but we have no idea what the
+        # outcome of that test was. Hopefully, that file printed a message of
+        # its own and then terminated GAP with a suitable error code (e.g. by
+        # using TestDirectory with exitGAP:=true); in that case we never get
+        # here an all is fine.
+        return "UNKNOWN";
     fi;
 fi;
 end;
