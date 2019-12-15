@@ -38,7 +38,6 @@ env:
     - REPO_URL=https://github.com/gap-packages/cvec.git
     - REPO_URL=https://github.com/gap-packages/datastructures.git
     - REPO_URL=https://github.com/gap-packages/debugger.git
-    - REPO_URL=https://gitlab.com/kaashif/decomp.git
     - REPO_URL=https://github.com/duskydolphin/DeepThoughtPackage.git
     - REPO_URL=https://github.com/gap-packages/design.git
     - REPO_URL=https://github.com/dylanpeifer/difsets.git
@@ -125,6 +124,7 @@ env:
     - REPO_URL=https://github.com/gap-packages/rds.git
     - REPO_URL=https://github.com/gap-packages/recog.git
     - REPO_URL=https://github.com/gap-packages/RegisterPackageTNUMDemo.git
+    - REPO_URL=https://github.com/gap-packages/RepnDecomp.git
     - REPO_URL=https://github.com/gap-packages/repsn.git
     - REPO_URL=https://github.com/gap-packages/resclasses.git
     - REPO_URL=https://github.com/gap-packages/scscp.git
