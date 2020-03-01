@@ -13,7 +13,7 @@ env:
     - REPO_URL=https://github.com/ffloresbrito/aaa.git
     - REPO_URL=https://github.com/gap-packages/ace.git
     - REPO_URL=https://github.com/gap-packages/aclib.git
-    - REPO_URL=https://github.com/rhysje00/agt
+    - REPO_URL=https://github.com/gap-packages/agt
     - REPO_URL=https://github.com/gap-packages/alnuth.git
     - REPO_URL=https://github.com/gap-packages/anupq.git
     - REPO_URL=https://github.com/gap-packages/AutoDoc.git
