@@ -84,6 +84,7 @@ env:
     - REPO_URL=https://github.com/gap-packages/liealgdb.git
     - REPO_URL=https://github.com/gap-packages/liepring.git
     - REPO_URL=https://github.com/gap-packages/liering.git
+    - REPO_URL=https://github.com/FriedrichRober/LINS.git
     - REPO_URL=https://github.com/gap-packages/LocalNR.git
     - REPO_URL=https://github.com/gap-packages/loops.git
     - REPO_URL=https://github.com/gap-packages/lpres.git
