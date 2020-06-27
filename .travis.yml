@@ -56,6 +56,7 @@ env:
     - REPO_URL=https://github.com/gap-packages/FrancyMonoids.git
     - REPO_URL=https://github.com/nzidaric/fsr.git
     - REPO_URL=https://github.com/gap-packages/fwtree.git
+    - REPO_URL=https://github.com/isadofschi/g2comp.git
     - REPO_URL=https://github.com/gap-packages/GaloisGroups.git
     - REPO_URL=https://github.com/gap-packages/gapbench.git
     - REPO_URL=https://github.com/gap-packages/GAPQuickcheck.git
@@ -75,6 +76,7 @@ env:
     - REPO_URL=https://github.com/gap-packages/intpic.git
     - REPO_URL=https://github.com/gap-packages/io.git
     - REPO_URL=https://github.com/bh11/irredsol.git
+    - REPO_URL=https://github.com/isadofschi/itest.git
     - REPO_URL=https://github.com/gap-packages/json.git
     - REPO_URL=https://github.com/gap-packages/JupyterKernel.git
     - REPO_URL=https://github.com/nathancarter/jupyterviz.git
@@ -114,6 +116,7 @@ env:
     - REPO_URL=https://github.com/gap-packages/polenta.git
     - REPO_URL=https://github.com/gap-packages/polycyclic.git
     - REPO_URL=https://github.com/gap-packages/polymaking.git
+    - REPO_URL=https://github.com/isadofschi/posets.git
     - REPO_URL=https://github.com/FKlie/Predicata.git
     - REPO_URL=https://github.com/gap-packages/primgrp.git
     - REPO_URL=https://github.com/gap-packages/profiling.git
@@ -140,6 +143,7 @@ env:
     - REPO_URL=https://github.com/gap-packages/singular.git
     - REPO_URL=https://github.com/gap-packages/SingularInterface.git
     - REPO_URL=https://github.com/gap-packages/sla.git
+    - REPO_URL=https://github.com/isadofschi/smallcancellation.git
     - REPO_URL=https://github.com/gap-packages/smallgrp.git
     - REPO_URL=https://github.com/gap-packages/smallsemi.git
     - REPO_URL=https://github.com/gap-packages/sonata.git
