@@ -5,7 +5,7 @@
 This repository is used to run standard tests for development
 versions of GAP packages using the Docker container with GAP
 from the tip of the master branch and packages from the archive
-https://www.gap-system.org/pub/gap/gap4pkgs/packages-master.tar.gz.
+https://files.gap-system.org/gap4pkgs/packages-master.tar.gz.
 This docker container is updated daily and is available on DockerHub:
 https://hub.docker.com/r/gapsystem/gap-docker-master/.
 
