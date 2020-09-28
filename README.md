@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/gap-infra/gap-docker-pkg-tests-master-devel.svg?branch=master)](https://travis-ci.org/gap-infra/gap-docker-pkg-tests-master-devel)
+[![Build Status](https://travis-ci.com/gap-infra/gap-docker-pkg-tests-master-devel.svg?branch=master)](https://travis-ci.com/gap-infra/gap-docker-pkg-tests-master-devel)
 
 # gap-docker-pkg-tests-master-devel
 
@@ -15,7 +15,7 @@ release, for their compatibility with the current development version
 of GAP and with other GAP packages prepared for the next GAP release.
 
 This test is run daily, and one can access test logs for each package at
-https://travis-ci.org/gap-infra/gap-docker-pkg-tests-master-devel. 
+https://travis-ci.com/gap-infra/gap-docker-pkg-tests-master-devel. 
 
 To use this service, the package should have a `TestFile` component in
 its `PackageInfo.g` to specify a short test (to run for no more than
