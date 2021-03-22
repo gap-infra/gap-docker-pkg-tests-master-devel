@@ -66,7 +66,7 @@ else
             Print( "#I  No errors detected while testing package ", pkgname,
                    " version ", GAPInfo.PackagesInfo.(pkgname)[1].Version, 
                    "\n#I  using the test file `", testfile, "'\n");
-            return true;       
+            return true;
         else
             Print( "#I  Errors detected while testing package ", pkgname, 
                    " version ", GAPInfo.PackagesInfo.(pkgname)[1].Version, 
@@ -76,6 +76,36 @@ else
     elif not READ( testfile ) then
         Print( "#I Test file `", testfile, "' for package `", pkgname,
         " version ", GAPInfo.PackagesInfo.(pkgname)[1].Version, " is not readable\n" );
+        return fail;
+    else
+        # At this point, the READ succeeded, but we have no idea what the
+        # outcome of that test was. Hopefully, that file printed a message of
+        # its own and then terminated GAP with a suitable error code (e.g. by
+        # using TestDirectory with exitGAP:=true); in that case we never get
+        # here an all is fine.
+        return "UNKNOWN";
     fi;
 fi;
+end;
+
+
+PreparePackageInDir := function(path)
+    local pkg, pkginfo;
+    pkg := LowercaseString(GetNameFromPackageInfo("PackageInfo.g"));
+    if IsPackageMarkedForLoading(pkg, "") then
+        # verify the right version of the package was loaded
+        pkginfo := GAPInfo.PackagesInfo.(pkg);
+        if Length(pkginfo) > 1 then
+            Print("#I  Found ", Length(pkginfo), " copies of package ", pkg, "\n");
+        fi;
+        if pkginfo[1].InstallationPath <> path then
+            Error("Package ", pkg, " already loaded from bad path '",
+                   pkginfo[1].InstallationPath, "' instead of the expected path '",
+                   path, "'");
+        fi;
+    else
+        # ensure the right version of the package gets loaded later on
+        SetPackagePath(pkg, path);
+    fi;
+    return pkg;
 end;
